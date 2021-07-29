@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reducers from './reducers';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+
+const initialTodoItems = [
+  {id: '1', todoItem: 'Learn React'},
+  {id: '2', todoItem: 'Buy Grocery'},
+  {id: '3', todoItem: 'Learn Angular'},
+  {id: '4', todoItem: 'Learn Microservice'}
+]
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={createStore(reducers, {})}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
